@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div style="margin:20px 0px 0px 200px;">
+        <input type="text" id="message" name="message" />
+        <input type="button" id="sendMessage" value="send" />
+
+        <div id="messages"></div>
+    </div>
+
+
+    <script src="../Scripts/jquery-1.9.0.js"></script>
+    <script src="../Scripts/jquery.signalR-2.1.2.js"></script>
+    <script src="../Scripts/jquery-ui-1.11.1.js"></script>
+
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script src="/signalr/hubs"></script>
+
+    <script>
+        $(function () {
+
+            var hub = $.connection.Chat;
+
+            hub.client.receive = function (m) {
+                $("#messages").append("<li>" + m + "</li>");
+            };
+
+
+            $.connection.hub.start().done(function () {
+
+                $("#sendMessage").click(function (e) {
+                    e.preventDefault();
+                    hub.server.message($("#message").val());
+                    $("#message").val("");
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
