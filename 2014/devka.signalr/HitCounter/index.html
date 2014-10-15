@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+    <body>
+        <div id="status"></div>
+
+        <script src="Scripts/jquery-2.1.1.js"></script>
+        <script src="Scripts/jquery.signalR-2.1.2.js"></script>
+        <script src="/signalr/hubs"></script>
+        <script>
+            $(function() {
+                var hub = $.connection.HitCounter;
+
+                hub.client.status = function (count) {
+                    $("#status").append("You are " + count + "th visitor");
+                };
+
+                $.connection.hub.start();
+            });
+        </script>
+    </body>
+</html>

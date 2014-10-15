@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        .perc {
+            float: right;
+            margin-right: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar"></div>
+    <div class="container">
+
+        <label>Čime se bavite:</label> <br />
+        <input type="radio" name="area" value="programiranje"> programiranje <span id="area0" class="perc"></span><br>
+        <input type="radio" name="area" value="administracija"> administracija <span id="area1" class="perc"></span><br>
+        <input type="radio" name="area" value="obrazovanje"> obrazovanje <span id="area2" class="perc"></span><br>
+        <input type="radio" name="area" value="drugo"> drugo <span id="area3" class="perc"></span><br>
+        <hr />
+
+        <label>Molimo označite najdraže programske jezike:</label> <br />
+        <input type="checkbox" data="lang" value="c"> C
+        <span id="c" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="cpp"> C++
+        <span id="cpp" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="csharp"> C#
+        <span id="csharp" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="css"> CSS
+        <span id="css" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="delphi"> Delphi
+        <span id="delphi" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="java"> Java
+        <span id="java" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="js"> JavaScript
+        <span id="js" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="logo"> Logo
+        <span id="logo" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="objc"> Objective-C
+        <span id="objc" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="perl"> Perl
+        <span id="perl" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="php"> PHP
+        <span id="php" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="python"> Python
+        <span id="python" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="qbasic"> QBasic
+        <span id="qbasic" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="ruby"> Ruby
+        <span id="ruby" data="lang" class="perc"></span><br>
+
+        <input type="checkbox" data="lang" value="lang-other"> Neki drugi
+        <span id="lang-other" data="lang" class="perc"></span><br>
+        <hr />
+
+        <label>Molim navedite područja interesa:</label> <br />
+        <input type="checkbox" data="interest" value="i1"> web app
+        <span id="i1" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i2"> mobile app
+        <span id="i2" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i3"> cloud app
+        <span id="i3" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i4"> desktop app
+        <span id="i4" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i5"> embedded devices
+        <span id="i5" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i6"> databases
+        <span id="i6" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i7"> administration
+        <span id="i7" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i8"> virtualization
+        <span id="i8" data="interest" class="perc"></span><br>
+
+        <input type="checkbox" data="interest" value="i9"> computer networks
+        <span id="i9" data="interest" class="perc"></span><br>
+    </div>
+
+    <script src="Scripts/jquery-2.1.1.js"></script>
+    <script src="Scripts/jquery.signalR-2.1.2.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script>
+        $(function () {
+
+            var hub = $.connection.Vote;
+
+            hub.client.updateareas = function (total, arr) {
+                for (var i in arr) {
+                    var p = "";
+                    if (total != 0)
+                        p = arr[i] * 100 / total + "%";
+
+                    $("#area" + i).text(p);
+                }
+            };
+
+            hub.client.updatelanguages = function (o) {
+                $('span[data=lang]').each(function () {
+                    $(this).text("");
+                });
+
+                for (var l in o) {
+                    $("#" + l).text(o[l]);
+                }
+            }
+
+            hub.client.updateinterests = function (o) {
+                $('span[data=interest]').each(function () {
+                    $(this).text("");
+                });
+
+                for (var l in o) {
+                    $("#" + l).text(o[l]);
+                }
+            }
+
+            $.connection.hub.start().done(function () {
+                $('input[type=radio][name=area]').change(function () {
+                    hub.server.area($(this).val());
+                });
+
+                $('input[type=checkbox][data=lang]').change(function () {
+                    var $this = $(this);
+                    hub.server.lang($this.prop('value'), $this.prop('checked'));
+                });
+                $('input[type=checkbox][data=interest]').change(function () {
+                    var $this = $(this);
+                    hub.server.interest($this.prop('value'), $this.prop('checked'));
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
