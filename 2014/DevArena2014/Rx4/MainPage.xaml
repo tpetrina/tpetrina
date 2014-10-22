@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Rx4.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Rx4"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Rx - sample 1"
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   FontSize="42"/>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <TextBlock Text="Enter text:" FontSize="20" />
+                <TextBox Name="tbEnter" MinWidth="200" />
+            </StackPanel>
+
+            <ListBox Name="lb" Margin="20,20"
+                     Grid.Column="1" />
+        </Grid>
+    </Grid>
+</Page>
