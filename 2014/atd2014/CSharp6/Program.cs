@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.ComponentModel;
+using System.Math;
 
 namespace CSharp6
 {
     // 1. Auto property initializers
     public class AutoPropertyInitializers
     {
-        public bool IsImportant { get; set; }
-        public ObservableCollection<int> MyProperty { get; set; }
+        public bool IsImportant { get; set; } = true;
+        public ObservableCollection<int> MyProperty { get; set; } = new ObservableCollection<int>();
 
-        public int MaxCount { get; private set; }
+        public int MaxCount { get; private set; } = 5;
 
         public bool IsMaxCountSet { get; }
 
@@ -25,9 +26,9 @@ namespace CSharp6
         {
             IsImportant = true;
             MyProperty = new ObservableCollection<int>();
-            MaxCount = 5;
+            //MaxCount = 5;
 
-            //IsMaxCountSet = true;
+            IsMaxCountSet = true;
         }
     }
 
@@ -52,7 +53,7 @@ namespace CSharp6
                 [1] = 1,
                 [2] = 1,
                 [3] = 1,
-                [4] = 1
+                [1] = 1
             };
         }
 
@@ -60,7 +61,8 @@ namespace CSharp6
         {
             return new Dictionary<string, bool>
             {
-                ["C# 6 je zakon"] = true
+                ["C# 6 je zako,n"] = true,
+                ["C# 6 je zako,n"] = false
             };
         }
     }
@@ -70,7 +72,7 @@ namespace CSharp6
     {
         public double AddsKinda(double x, double y)
         {
-            return Math.Cos(x) * Math.Cos(y) - Math.Sin(x) * Math.Sin(y);
+            return Cos(x) * Cos(y) - Sin(x) * Sin(y);
         }
     }
 
@@ -84,10 +86,10 @@ namespace CSharp6
                 var client = new HttpClient();
                 return await client.GetStringAsync(url);
             }
-            //catch (WebException ex) if(ex?.Response?.As<HttpWebResponse>()?.StatusCode == HttpStatusCode.NotFound)
-            //{
-            //    return string.Empty;
-            //}
+            catch (WebException ex) if (ex?.Response?.As<HttpWebResponse>()?.StatusCode == HttpStatusCode.NotFound)
+            {
+                return string.Empty;
+            }
             catch (WebException ex)
             {
                 var response = ex.Response as HttpWebResponse;
@@ -107,16 +109,14 @@ namespace CSharp6
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string FullName
-            => FirstName + " " + LastName;
+        public string FullName => FirstName + " " + LastName;
     }
 
     public static class StringInterpolation
     {
         public static string Format(ExpressionBodyMembers x)
         {
-            //return $"My name is {x.FirstName} {x.LastName}";
-            return string.Empty;
+            return "My name is \{x.FirstName} \{x.LastName}";
         }
     }
 
