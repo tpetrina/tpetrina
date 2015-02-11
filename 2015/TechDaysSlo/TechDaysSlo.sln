@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22512.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Channel9Wpf", "Channel9Wpf\Channel9Wpf.csproj", "{95BC0C7C-61CC-46A0-8B82-A32A44DB0E48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debugger", "Debugger\Debugger.csproj", "{EE1B823D-8A30-4240-86C0-0771215EEF74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion\Recursion.csproj", "{EACB451B-8E13-4C59-BE80-988489BF7EEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95BC0C7C-61CC-46A0-8B82-A32A44DB0E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BC0C7C-61CC-46A0-8B82-A32A44DB0E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BC0C7C-61CC-46A0-8B82-A32A44DB0E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BC0C7C-61CC-46A0-8B82-A32A44DB0E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1B823D-8A30-4240-86C0-0771215EEF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1B823D-8A30-4240-86C0-0771215EEF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1B823D-8A30-4240-86C0-0771215EEF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1B823D-8A30-4240-86C0-0771215EEF74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACB451B-8E13-4C59-BE80-988489BF7EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACB451B-8E13-4C59-BE80-988489BF7EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACB451B-8E13-4C59-BE80-988489BF7EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACB451B-8E13-4C59-BE80-988489BF7EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

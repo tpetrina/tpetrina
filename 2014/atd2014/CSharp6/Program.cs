@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.ComponentModel;
 using System.Math;
+using System.Console;
 
 namespace CSharp6
 {
@@ -20,7 +21,7 @@ namespace CSharp6
 
         public int MaxCount { get; private set; } = 5;
 
-        public bool IsMaxCountSet { get; }
+        public bool IsMaxCountSet { get; } = false;
 
         public AutoPropertyInitializers()
         {
@@ -86,7 +87,10 @@ namespace CSharp6
                 var client = new HttpClient();
                 return await client.GetStringAsync(url);
             }
-            catch (WebException ex) if (ex?.Response?.As<HttpWebResponse>()?.StatusCode == HttpStatusCode.NotFound)
+            catch (WebException ex)
+            if (ex?.Response
+                   ?.As<HttpWebResponse>()
+                   ?.StatusCode == HttpStatusCode.NotFound)
             {
                 return string.Empty;
             }
@@ -109,7 +113,7 @@ namespace CSharp6
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string FullName => FirstName + " " + LastName;
+        public string FullName => "\{FirstName} \{LastName}";
     }
 
     public static class StringInterpolation
@@ -140,7 +144,7 @@ namespace CSharp6
         protected void RaisePropertyChanged(PropertyChangedEventArgs args)
         {
             PropertyChanged?.Invoke(this, args);
-        } 
+        }
         #endregion
     }
 
