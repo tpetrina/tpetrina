@@ -26,10 +26,10 @@ class List extends React.Component<{} & RouteComponentProps<{}>, State> {
     items: []
   }
 
-  componentDidMount() {
-    fetch("/api/list")
-      .then(r => r.json() as Promise<Item[]>)
-      .then(items => this.setState({ items: items }))
+  async componentDidMount() {
+    let response = await fetch("/api/list")
+    let data = await response.json()
+    this.setState({ items: data })
   }
 
   render() {
