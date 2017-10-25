@@ -23,13 +23,13 @@ interface State {
 
 class List extends React.Component<{} & RouteComponentProps<{}>, State> {
   state: State = {
-    items: [
-      { id: 1, name: "john" },
-      {
-        id: 2,
-        name: "smith"
-      }
-    ]
+    items: []
+  }
+
+  componentDidMount() {
+    fetch("/api/list")
+      .then(r => r.json() as Promise<Item[]>)
+      .then(items => this.setState({ items: items }))
   }
 
   render() {
