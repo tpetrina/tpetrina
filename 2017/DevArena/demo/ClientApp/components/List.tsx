@@ -1,14 +1,28 @@
 import * as React from "react"
+import { RouteComponentProps } from "react-router"
 
-const Row = ({ item }: any) => (
+interface Item {
+  id: number
+  name: string
+}
+
+interface Props {
+  item: Item
+}
+
+const Row = ({ item }: Props) => (
   <tr>
     <td>{item.id}</td>
     <td>{item.name}</td>
   </tr>
 )
 
-class List extends React.Component<any, any> {
-  state = {
+interface State {
+  items: Item[]
+}
+
+class List extends React.Component<{} & RouteComponentProps<{}>, State> {
+  state: State = {
     items: [
       { id: 1, name: "john" },
       {
