@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace demo.Controllers
 {
@@ -6,12 +8,11 @@ namespace demo.Controllers
     public class ListController : Controller
     {
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get(
+            [FromServices]ApplicationDbContext db
+        )
         {
-            return Ok(new[]
-            {
-                new {id=1, name="john"}
-            });
+            return Ok(await db.Person.ToListAsync());
         }
     }
 }
