@@ -5,6 +5,7 @@ namespace demo.Controllers
     [Route("api/[Controller]")]
     public class ListController : Controller
     {
+        [HttpGet]
         public IActionResult Get()
         {
             return Ok(new[]
