@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamarin"
+             x:Class="Xamarin.MainPage">
+
+    <Grid x:Name="Counter">
+        <StackLayout Padding="20" Margin="20">
+            <Label FontSize="32">Counter</Label>
+            <Label Text="{Binding Counter}" />
+            <Button Clicked="Inc_Click" TextColor="Red" Text="++">+</Button>
+            <Button Command="{Binding IncCommand}" TextColor="Green">+</Button>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

@@ -108,3 +108,5 @@ Backup*/
 UpgradeLog*.XML
 2014/DevArena2014/DevArena2014.sln.ide/
 2014/atd2014/atd2014.sln.ide/
+
+.DS_Store

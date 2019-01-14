@@ -1,5 +1,6 @@
 import * as React from "react"
 import { RouteComponentProps } from "react-router"
+import { getList, store } from "./api"
 
 interface Item {
   id: number
@@ -26,10 +27,12 @@ class List extends React.Component<{} & RouteComponentProps<{}>, State> {
     items: []
   }
 
-  async componentDidMount() {
-    let response = await fetch("/api/list")
-    let data = await response.json()
-    this.setState({ items: data })
+  componentWillMount() {
+    getList()
+  }
+
+  componentDidMount() {
+    this.setState({ items: (window as any)["initialState"].list })
   }
 
   render() {
