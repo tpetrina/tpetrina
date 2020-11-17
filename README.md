@@ -1,6 +1,4 @@
-Hello there!
-
-![Sneezing cat](https://i.gifer.com/MXYR.gif)
+# Hello there!
 
 ## Presentations
 
