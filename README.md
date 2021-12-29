@@ -9,6 +9,7 @@
 
 ## Videos
 
+- [Asynchronous UX](https://www.youtube.com/watch?v=1ASvTw0Hl7M) - React Advanced 2021
 - [Refactoring to CQRS](https://vimeo.com/372379878) - Øredev, Malmø 2019
 - [Why is building forms in React difficult](https://www.youtube.com/watch?v=VRdEQzAmefY) - React Copenhagen Meetup, 2019
 - [The Async Nightmare](https://www.youtube.com/watch?v=YJ1jwbBvEfE) - WebCamp 2018, Zagreb, Croatia
